@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+
+  ::selection {
+    background: rgba(56, 189, 248, 0.25);
+    color: #f1f5f9;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-200 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  input, select, textarea {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-slate-900/70 backdrop-blur-xl border border-slate-800/60 rounded-2xl;
+    box-shadow:
+      0 0 0 1px rgba(148, 163, 184, 0.05),
+      0 4px 24px -4px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(148, 163, 184, 0.06);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    @apply border-slate-700/80 scale-[1.01];
+    box-shadow:
+      0 0 0 1px rgba(148, 163, 184, 0.08),
+      0 8px 32px -4px rgba(0, 0, 0, 0.5),
+      0 0 24px -8px rgba(56, 189, 248, 0.08),
+      inset 0 1px 0 rgba(148, 163, 184, 0.08);
+  }
+
+  .input-dark {
+    @apply w-full px-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-slate-100 placeholder-slate-500 transition-all duration-200;
+  }
+
+  .input-dark:focus {
+    @apply outline-none border-cyan-500/50 ring-2 ring-cyan-500/20 bg-slate-800/80;
+  }
+
+  .btn-primary {
+    @apply w-full py-3 px-6 font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm tracking-wide;
+    @apply bg-gradient-to-r from-cyan-500 to-blue-600 text-white;
+    @apply hover:from-cyan-400 hover:to-blue-500 hover:shadow-lg hover:shadow-cyan-500/20;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none;
+  }
+
+  .btn-success {
+    @apply py-3 px-6 font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm;
+    @apply bg-gradient-to-r from-emerald-500 to-green-600 text-white;
+    @apply hover:from-emerald-400 hover:to-green-500 hover:shadow-lg hover:shadow-emerald-500/20;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply py-3 px-6 font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm;
+    @apply bg-gradient-to-r from-red-500 to-rose-600 text-white;
+    @apply hover:from-red-400 hover:to-rose-500 hover:shadow-lg hover:shadow-red-500/20;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .badge {
+    @apply px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider;
+  }
+
+  .badge-pending {
+    @apply badge bg-amber-500/15 text-amber-400 border border-amber-500/20;
+  }
+
+  .badge-approved {
+    @apply badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .badge-rejected {
+    @apply badge bg-red-500/15 text-red-400 border border-red-500/20;
+  }
+
+  .section-title {
+    @apply text-xs font-bold uppercase tracking-[0.15em] text-slate-500 mb-3;
+  }
+
+  .glow-line {
+    @apply h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
